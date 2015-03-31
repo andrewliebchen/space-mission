@@ -1,0 +1,28 @@
+<head>
+  <title>space-mission</title>
+</head>
+
+<body>
+  <div class="constellations">
+    {{> constellations}}
+  </div>
+</body>
+
+<template name="constellations">
+  {{#each constellation}}
+    <div class="constellation">
+      <h2>{{title}}</h2>
+      <div class="systems">
+        {{> systems}}
+      </div>
+    </div>
+  {{/each}}
+</template>
+
+<template name="systems">
+  {{#each systems}}
+    <div class="system">
+      <h3>{{../title}}</h3>
+    </div>
+  {{/each}}
+</template>
