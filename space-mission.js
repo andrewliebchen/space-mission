@@ -4,6 +4,27 @@ Planets = new Meteor.Collection('planets');
 Crews = new Meteor.Collection('crews');
 
 if (Meteor.isClient) {
+  Session.setDefault('activePanel', null);
+  Session.setDefault('currentItem', null);
+
+  Template.panel.helpers({
+    activePanel: function(){
+      return Session.get('activePanel');
+    }
+  });
+
+  Template.body.events({
+    'click [data-panel-template]' : function(event) {
+      var template = $(event.target).data('panel-template');
+      Session.set('activePanel', template);
+      Session.set('currentItem', this._id);
+    },
+
+    'click [data-panel="close"]' : function(event) {
+      Session.set('activePanel', null);
+    }
+  });
+
   Template.constellations.helpers({
     constellation: function(){
       return Constellations.find({});
@@ -17,22 +38,36 @@ if (Meteor.isClient) {
   });
 
   Template.addConstellation.events({
-    'click .mtr_add-constellation': function() {
+    'click .mtr_add-constellation': function(event, template) {
+      var title = template.find('#mtr_constellation-title');
+      var description = template.find('#mtr_constellation-description');
+
       Meteor.call('addConstellation', {
-        title: 'New constellation',
-        description: 'Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque.'
+        title: title.value,
+        description: description.title
       });
+
+      title.value = '';
+      description.value = '';
     }
   });
 
   Template.addSystem.events({
-    'click .mtr_add-system': function() {
+    'click .mtr_add-system': function(event, template) {
+      var title = template.find('#mtr_system-title');
+      var description = template.find('#mtr_system-description');
+      var size = template.find('#mtr_system-size');
+
       Meteor.call('addSystem', {
-        title: 'New system',
-        description: 'Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque.',
-        size: 'small',
-        parent: this._id
+        title: title.value,
+        description: description.value,
+        size: size.value,
+        parent: Session.get('currentItem')
       });
+
+      title.value = '';
+      description.value = '';
+      size.value = '';
     }
   });
 }

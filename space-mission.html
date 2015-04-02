@@ -5,8 +5,9 @@
 <body>
   <div class="constellations">
     {{> constellations}}
-    {{> addConstellation}}
+    <a data-panel-template="addConstellation">Add constellation</a>
   </div>
+  {{> panel}}
 </body>
 
 <template name="constellations">
@@ -16,7 +17,7 @@
       <div class="systems">
         {{> systems}}
       </div>
-      {{> addSystem}}
+      <a data-panel-template="addSystem">Add system</a>
     </div>
   {{/each}}
 </template>
@@ -29,10 +30,37 @@
   {{/each}}
 </template>
 
+<template name="panel">
+  {{#if activePanel}}
+    <div class="panel">
+      {{> UI.dynamic template=activePanel}}
+    </div>
+  {{/if}}
+</template>
+
 <template name="addConstellation">
-  <a class="mtr_add-constellation">Add constellation</a>
+  <label>Title</label>
+  <input type="text" id="mtr_constellation-title">
+
+  <label>Description</label>
+  <textarea id="mtr_constellation-description"></textarea>
+
+  <button class="mtr_add-constellation">Add constellation</button>
 </template>
 
 <template name="addSystem">
-  <a class="mtr_add-system">Add system</a>
+  <label>Title</label>
+  <input type="text" id="mtr_system-title">
+
+  <label>Description</label>
+  <textarea id="mtr_system-description"></textarea>
+
+  <label>Size</label>
+  <select id="mtr_system-size">
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+  </select>
+
+  <button class="mtr_add-system">Add system</button>
 </template>
