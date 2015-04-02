@@ -5,6 +5,7 @@
 <body>
   <div class="constellations">
     {{> constellations}}
+    {{> addConstellation}}
   </div>
 </body>
 
@@ -15,6 +16,7 @@
       <div class="systems">
         {{> systems}}
       </div>
+      {{> addSystem}}
     </div>
   {{/each}}
 </template>
@@ -25,4 +27,12 @@
       <h3>{{title}}</h3>
     </div>
   {{/each}}
+</template>
+
+<template name="addConstellation">
+  <a class="mtr_add-constellation">Add constellation</a>
+</template>
+
+<template name="addSystem">
+  <a class="mtr_add-system">Add system</a>
 </template>
