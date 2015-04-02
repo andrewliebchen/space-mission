@@ -1,16 +1,27 @@
-function systemSeed() {
-  var randSize = Math.random() * (3 - 1) + 1;
-  var size;
-  switch(randSize){
-    case 1: size = 'small';
-    case 2: size = 'medium';
-    case 3: size = 'large';
-  };
+function randNum(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
 
-  return Systems.insert({
-    title: 'System name',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit.',
-    size: size
+function randomSize() {
+  var size;
+  switch(randNum(1, 3)){
+    case 1:
+      size = 'small';
+      break;
+    case 2:
+      size = 'medium';
+      break;
+    case 3:
+      size = 'large';
+      break;
+  };
+  return size;
+}
+
+function constellationSeed(num) {
+  return Constellations.insert({
+    title: 'Constellation ' + num,
+    description: 'Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna ac lorem rutrum elementum. Donec viverra auctor.'
   });
 }
 
@@ -22,10 +33,18 @@ if (Meteor.isServer) {
     Crews.remove({});
 
     if(Constellations.find().count() === 0) {
-      Constellations.insert({
-        title: 'Constellation name',
-        description: 'Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum.',
-        systems: [systemSeed(), systemSeed(), systemSeed()]
+      _(3).times(function(i){
+        var constellationParent = constellationSeed(i);
+
+        _(5).times(function(h){
+          var size = randomSize();
+          Systems.insert({
+            title: 'System ' + h,
+            description: 'Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum.',
+            size: size,
+            parent: constellationParent
+          });
+        });
       });
     }
   });

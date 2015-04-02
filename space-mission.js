@@ -9,6 +9,12 @@ if (Meteor.isClient) {
       return Constellations.find({});
     }
   });
+
+  Template.systems.helpers({
+    system: function(){
+      return Systems.find({parent: this._id});
+    }
+  });
 }
 
 if (Meteor.isServer) {
