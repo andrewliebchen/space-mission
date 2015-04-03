@@ -42,13 +42,15 @@ if (Meteor.isClient) {
       var title = template.find('#mtr_constellation-title');
       var description = template.find('#mtr_constellation-description');
 
-      Meteor.call('addConstellation', {
-        title: title.value,
-        description: description.title
-      });
+      if(title.value) {
+        Meteor.call('addConstellation', {
+          title: title.value,
+          description: description.title
+        });
 
-      title.value = '';
-      description.value = '';
+        title.value = '';
+        description.value = '';
+      }
     }
   });
 
@@ -58,16 +60,18 @@ if (Meteor.isClient) {
       var description = template.find('#mtr_system-description');
       var size = template.find('#mtr_system-size');
 
-      Meteor.call('addSystem', {
-        title: title.value,
-        description: description.value,
-        size: size.value,
-        parent: Session.get('currentItem')
-      });
+      if(title.value && size.value) {
+        Meteor.call('addSystem', {
+          title: title.value,
+          description: description.value,
+          size: size.value,
+          parent: Session.get('currentItem')
+        });
 
-      title.value = '';
-      description.value = '';
-      size.value = '';
+        title.value = '';
+        description.value = '';
+        size.value = '';
+      }
     }
   });
 }
