@@ -42,7 +42,11 @@ if (Meteor.isServer) {
             title: 'System ' + h,
             description: 'Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum.',
             size: size,
-            parent: constellationParent
+            parent: constellationParent,
+            position: {
+              x: randNum(0, 100),
+              y: randNum(0, 100)
+            }
           });
         });
       });

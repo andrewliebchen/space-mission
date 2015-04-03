@@ -1,0 +1,75 @@
+$systemSizes: (
+  small: 1em,
+  medium: 2em,
+  large: 3em
+);
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "avenir next", avenir, arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.panel {
+  background-color: white;
+  border-left: 1px solid;
+  bottom: 0;
+  padding: 2em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 33%;
+  z-index: 99;
+}
+
+.constellations {
+  @include clearfix;
+}
+
+.constellation {
+  float: left;
+  position: relative;
+  width: 20%;
+
+  &::before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+}
+
+.constellation__meta {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+
+.systems {
+
+}
+
+.system {
+  border: 2px solid;
+  position: absolute;
+
+  @each $sizeKey, $sizeValue in $systemSizes {
+    &.#{$sizeKey} {
+      border-radius: $sizeValue / 2;
+      height: $sizeValue;
+      width: $sizeValue;
+    }
+  }
+}

@@ -13,19 +13,21 @@
 <template name="constellations">
   {{#each constellation}}
     <div class="constellation">
-      <h2>{{title}}</h2>
       <div class="systems">
         {{> systems}}
       </div>
-      <a data-panel-template="addSystem">Add system</a>
+      <div class="constellation__meta">
+        <h2>{{title}}</h2>
+        <a data-panel-template="addSystem">Add system</a>
+      </div>
     </div>
   {{/each}}
 </template>
 
 <template name="systems">
   {{#each system}}
-    <div class="system {{size}}">
-      <h3>{{title}}</h3>
+    <div class="system {{size}}" style="top:{{position.x}}%; left:{{position.y}}%;">
+      <!-- <h3>{{title}}</h3> -->
     </div>
   {{/each}}
 </template>
@@ -33,6 +35,7 @@
 <template name="panel">
   {{#if activePanel}}
     <div class="panel">
+      <a data-panel="close">close</a>
       {{> UI.dynamic template=activePanel}}
     </div>
   {{/if}}
