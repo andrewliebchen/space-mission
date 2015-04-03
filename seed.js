@@ -33,10 +33,10 @@ if (Meteor.isServer) {
     Crews.remove({});
 
     if(Constellations.find().count() === 0) {
-      _(3).times(function(i){
+      _(10).times(function(i){
         var constellationParent = constellationSeed(i);
 
-        _(5).times(function(h){
+        _(7).times(function(h){
           var size = randomSize();
           Systems.insert({
             title: 'System ' + h,

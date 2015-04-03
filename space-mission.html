@@ -3,9 +3,11 @@
 </head>
 
 <body>
+  <header class="header">
+    <button data-panel-template="addConstellation">Add constellation</button>
+  </header>
   <div class="constellations">
     {{> constellations}}
-    <a data-panel-template="addConstellation">Add constellation</a>
   </div>
   {{> panel}}
 </body>
@@ -42,28 +44,33 @@
 </template>
 
 <template name="addConstellation">
-  <label>Title</label>
-  <input type="text" id="mtr_constellation-title">
-
-  <label>Description</label>
-  <textarea id="mtr_constellation-description"></textarea>
-
+  <fieldset>
+    <label>Title</label>
+    <input type="text" id="mtr_constellation-title">
+  </fieldset>
+  <fieldset>
+    <label>Description</label>
+    <textarea id="mtr_constellation-description"></textarea>
+  </fieldset>
   <button class="mtr_add-constellation">Add constellation</button>
 </template>
 
 <template name="addSystem">
-  <label>Title</label>
-  <input type="text" id="mtr_system-title">
-
-  <label>Description</label>
-  <textarea id="mtr_system-description"></textarea>
-
-  <label>Size</label>
-  <select id="mtr_system-size">
-    <option value="small">Small</option>
-    <option value="medium">Medium</option>
-    <option value="large">Large</option>
-  </select>
-
+  <fieldset>
+    <label>Title</label>
+    <input type="text" id="mtr_system-title">
+  </fieldset>
+  <fieldset>
+    <label>Description</label>
+    <textarea id="mtr_system-description"></textarea>
+  </fieldset>
+  <fieldset>
+    <label>Size</label>
+    <select id="mtr_system-size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+  </fieldset>
   <button class="mtr_add-system">Add system</button>
 </template>

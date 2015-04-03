@@ -14,6 +14,8 @@ $systemSizes: (
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html,
@@ -21,6 +23,27 @@ body {
   font-family: "avenir next", avenir, arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+}
+
+fieldset {
+  border: 0;
+  padding: 0 0 1em;
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: bold;
+  display: block;
+}
+
+.header {
+  @include clearfix;
+  padding: 1em;
+
+  button {
+    float: right;
+  }
 }
 
 .panel {
@@ -37,12 +60,18 @@ body {
 
 .constellations {
   @include clearfix;
+  margin: 1%;
+  border-top: 1px dashed;
+  border-left: 1px dashed;
 }
 
 .constellation {
   float: left;
   position: relative;
   width: 20%;
+  border-right: 1px dashed;
+  border-bottom: 1px dashed;
+  padding: 1em;
 
   &::before{
     content: "";
@@ -52,9 +81,17 @@ body {
 }
 
 .constellation__meta {
-  bottom: 0;
   left: 0;
+  bottom: 0;
+  padding: 1em;
+  top: 0;
+  right: 0;
   position: absolute;
+  display: none;
+
+  .constellation:hover & {
+    display: block;
+  }
 }
 
 .systems {
