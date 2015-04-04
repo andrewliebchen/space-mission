@@ -101,6 +101,7 @@ label {
 .system {
   border: 2px solid;
   position: absolute;
+  display: block;
 
   @each $sizeKey, $sizeValue in $systemSizes {
     &.#{$sizeKey} {
