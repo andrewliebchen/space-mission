@@ -2,28 +2,36 @@
   <title>space-mission</title>
 </head>
 
-<body>
+<template name="application">
   <header class="header">
     <button data-panel-template="addConstellation">Add constellation</button>
   </header>
-  <div class="constellations">
-    {{> constellations}}
-  </div>
+  {{> yield}}
   {{> panel}}
-</body>
+</template>
+
+<template name="loading">
+  Loading
+</template>
 
 <template name="constellations">
-  {{#each constellation}}
-    <div class="constellation">
-      <div class="systems">
-        {{> systems}}
+  <div class="constellations">
+    {{#each constellation}}
+      <div class="constellation">
+        <div class="systems">
+          {{> systems}}
+        </div>
+        <div class="constellation__meta">
+          <h2>{{title}}</h2>
+          <button data-panel-template="addSystem">Add system</button>
+        </div>
       </div>
-      <div class="constellation__meta">
-        <h2>{{title}}</h2>
-        <button data-panel-template="addSystem">Add system</button>
-      </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="system">
+  System
 </template>
 
 <template name="systems">

@@ -25,31 +25,29 @@ function constellationSeed(num) {
   });
 }
 
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    Constellations.remove({});
-    Systems.remove({});
-    Planets.remove({});
-    Crews.remove({});
+Meteor.startup(function () {
+  Constellations.remove({});
+  Systems.remove({});
+  Planets.remove({});
+  Crews.remove({});
 
-    if(Constellations.find().count() === 0) {
-      _(10).times(function(i){
-        var constellationParent = constellationSeed(i);
+  if(Constellations.find().count() === 0) {
+    _(10).times(function(i){
+      var constellationParent = constellationSeed(i);
 
-        _(7).times(function(h){
-          var size = randomSize();
-          Systems.insert({
-            title: 'System ' + h,
-            description: 'Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum.',
-            size: size,
-            parent: constellationParent,
-            position: {
-              x: randNum(0, 100),
-              y: randNum(0, 100)
-            }
-          });
+      _(7).times(function(h){
+        var size = randomSize();
+        Systems.insert({
+          title: 'System ' + h,
+          description: 'Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum.',
+          size: size,
+          parent: constellationParent,
+          position: {
+            x: randNum(0, 100),
+            y: randNum(0, 100)
+          }
         });
       });
-    }
-  });
-}
+    });
+  }
+});
