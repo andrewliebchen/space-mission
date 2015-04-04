@@ -20,11 +20,14 @@ Router.map(function() {
   this.route('system', {
     path: '/systems/:_id',
     waitOn: function() {
-      return Meteor.subscribe('system', this.params._id);
+      return [
+        Meteor.subscribe('system', this.params._id),
+        Meteor.subscribe('planets', this.params._id)
+      ];
     },
     data: function() {
       return [
-        Systems.find({}),
+        Systems.findOne(),
         Planets.find({})
       ];
     }

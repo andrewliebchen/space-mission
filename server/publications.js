@@ -5,6 +5,10 @@ Meteor.publish('constellations', function(){
   ];
 });
 
-Meteor.publish('system', function(id) {
-  return Systems.find(id) && Planets.find({parent: id});
+Meteor.publish('system', function(id){
+  return Systems.find(id);
+});
+
+Meteor.publish('planets', function(id){
+  return Planets.find({parent: id});
 });

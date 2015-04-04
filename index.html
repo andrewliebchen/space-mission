@@ -31,7 +31,12 @@
 </template>
 
 <template name="system">
-  System
+  {{#each system}}
+    <h2>{{title}}</h2>
+  {{/each}}
+  {{#each planet}}
+    <h3>{{title}}</h3>
+  {{/each}}
 </template>
 
 <template name="systems">

@@ -31,6 +31,16 @@ Template.systems.helpers({
   }
 });
 
+Template.system.helpers({
+  system: function(){
+    return Systems.find({});
+  },
+
+  planet: function(){
+    return Planets.find({});
+  }
+});
+
 Template.addConstellation.events({
   'click .mtr_add-constellation': function(event, template) {
     var title = template.find('#mtr_constellation-title');
