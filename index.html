@@ -31,12 +31,16 @@
 </template>
 
 <template name="system">
-  {{#each system}}
-    <h2>{{title}}</h2>
-  {{/each}}
-  {{#each planet}}
-    <h3>{{title}}</h3>
-  {{/each}}
+  <div class="planets paused">
+    {{#each planet}}
+      <div class="planet__orbit"
+        style="width: {{index}}%;
+               margin-top: -{{margin}}%;
+               margin-left: -{{margin}}%">
+        <div class="planet {{size}}"></div>
+      </div>
+    {{/each}}
+  </div>
 </template>
 
 <template name="systems">

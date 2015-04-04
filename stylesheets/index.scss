@@ -3,12 +3,24 @@ $systemSizes: (
   medium: 2em,
   large: 3em
 );
+$transformCenter: translate3d(-50%, -50%, 0);
 
+// MIXINS
 @mixin clearfix {
   &::after {
     clear: both;
     content: "";
     display: table;
+  }
+}
+
+// ANIMATIONS
+@keyframes orbit {
+  0% {
+    transform: rotate3d(0, 0, 0, 360deg);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
   }
 }
 
@@ -98,16 +110,67 @@ label {
 
 }
 
-.system {
+.system,
+.planet {
   border: 2px solid;
   position: absolute;
   display: block;
+}
 
-  @each $sizeKey, $sizeValue in $systemSizes {
-    &.#{$sizeKey} {
-      border-radius: $sizeValue / 2;
-      height: $sizeValue;
-      width: $sizeValue;
-    }
+@each $sizeKey, $sizeValue in $systemSizes {
+  .#{$sizeKey} {
+    border-radius: $sizeValue / 2;
+    height: $sizeValue;
+    width: $sizeValue;
   }
+}
+
+.planets {
+  padding: 1em;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.planet__orbit {
+  animation: orbit 3s linear infinite;
+  transform-origin: 50% 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+  border: 1px solid #ccc;
+
+  &::before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  &:nth-child(2) {
+    animation-duration: 6s;
+  }
+
+  &:nth-child(3) {
+    animation-duration: 9s;
+  }
+
+  &:nth-child(4) {
+    animation-duration: 12s;
+  }
+
+  &:nth-child(5) {
+    animation-duration: 15s;
+  }
+
+  .paused & {
+    animation-play-state: paused;
+  }
+}
+
+.planet {
+  top: 50%;
+  left: 0;
+  transform: $transformCenter;
+  background-color: white;
 }

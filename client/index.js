@@ -37,7 +37,11 @@ Template.system.helpers({
   },
 
   planet: function(){
-    return Planets.find({});
+    return Planets.find({}).map(function(planet, index) {
+      planet.index = (index + 1) * 8;
+      planet.margin = planet.index / 2;
+      return planet;
+    });;
   }
 });
 
