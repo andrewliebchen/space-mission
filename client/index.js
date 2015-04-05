@@ -38,9 +38,12 @@ Template.system.helpers({
 
   planet: function(){
     var planetsTotal = Counts.get('planetsTotal');
+    var orbitSpeed = 6;
     return Planets.find({}).map(function(planet, index) {
       planet.width = (index + 1) / planetsTotal * 100;
       planet.margin = planet.width / 2;
+      planet.duration = (index * orbitSpeed) + orbitSpeed;
+
       return planet;
     });
   }

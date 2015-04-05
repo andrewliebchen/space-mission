@@ -43,7 +43,11 @@
       <div class="planet__orbit"
         style="width: {{width}}%;
                margin-top: -{{margin}}%;
-               margin-left: -{{margin}}%">
+               margin-left: -{{margin}}%;
+               -webkit-animation-duration: {{duration}}s;
+                  -moz-animation-duration: {{duration}}s;
+                    -o-animation-duration: {{duration}}s;
+                       animation-duration: {{duration}}s;">
         <div class="planet {{size}}"></div>
       </div>
     {{/each}}
