@@ -61,6 +61,16 @@ Template.system.events({
 Template.planet.helpers({
   planetDetail: function(){
     return Planets.find({_id: Session.get('currentItem')});
+  },
+
+  systemParent: function(){
+    return Systems.findOne().title;
+  },
+
+  constellationParent: function(){
+    var constellationParent = Systems.findOne().parent;
+    Meteor.subscribe('constellation', constellationParent);
+    return Constellations.findOne().title;
   }
 });
 

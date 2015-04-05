@@ -71,6 +71,18 @@
   {{#each planetDetail}}
     <h2>{{title}}</h2>
     <p>{{description}}</p>
+    <dl>
+      <dt>System</dt>
+      <dd>{{systemParent}}</dd>
+    </dl>
+    <dl>
+      <dt>Constellation</dt>
+      {{#if Template.subscriptionsReady}}
+        <dd>{{constellationParent}}</dd>
+      {{else}}
+        <dd>Loading</dd>
+      {{/if}}
+    </dl>
   {{/each}}
 </template>
 
