@@ -50,7 +50,7 @@
 <template name="system">
   <div class="planets">
     {{#each planet}}
-      <div class="planet__orbit"
+      <div class="planet__orbit mtr_planet-details"
         data-panel-template="planet"
         style="width: {{width}}%;
                margin-top: -{{margin}}%;
@@ -60,7 +60,7 @@
                   -moz-animation-duration: {{duration}}s;
                     -o-animation-duration: {{duration}}s;
                        animation-duration: {{duration}}s;">
-        <div class="planet {{size}}" data-panel-template="planet"></div>
+        <div class="planet {{size}} mtr_planet-details" data-panel-template="planet"></div>
       </div>
     {{/each}}
     <div class="sun"></div>
@@ -68,7 +68,10 @@
 </template>
 
 <template name="planet">
-  Planet
+  {{#each planetDetail}}
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+  {{/each}}
 </template>
 
 <template name="panel">

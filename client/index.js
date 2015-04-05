@@ -11,6 +11,7 @@ Template.application.events({
   'click [data-panel-template]' : function(event) {
     var template = $(event.target).data('panel-template');
     Session.set('activePanel', template);
+    Session.set('currentItem', this._id);
   },
 
   'click [data-panel="close"]' : function(event) {
@@ -49,11 +50,19 @@ Template.system.helpers({
   }
 });
 
-// Template.system.events({
-//   'click .planet': function() {
-//     console.log('click')
-//   }
-// });
+Template.system.events({
+  'click .mtr_planet-details': function(event) {
+    var template = $(event.target).data('panel-template');
+    Session.set('activePanel', template);
+    Session.set('currentItem', this._id);
+  }
+});
+
+Template.planet.helpers({
+  planetDetail: function(){
+    return Planets.find({_id: Session.get('currentItem')});
+  }
+});
 
 Template.addConstellation.events({
   'click .mtr_add-constellation': function(event, template) {
