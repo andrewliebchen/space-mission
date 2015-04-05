@@ -13,5 +13,14 @@ Meteor.methods({
       size: args.size,
       parent: args.parent
     });
+  },
+
+  addPlanet: function(args){
+    Planets.insert({
+      title: args.title,
+      description: args.description,
+      size: args.size,
+      parent: args.parent
+    });
   }
 });

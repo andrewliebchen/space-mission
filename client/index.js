@@ -7,11 +7,11 @@ Template.panel.helpers({
   }
 });
 
-Template.body.events({
+Template.header.events({
   'click [data-panel-template]' : function(event) {
     var template = $(event.target).data('panel-template');
     Session.set('activePanel', template);
-    Session.set('currentItem', this._id);
+    console.log('click')
   },
 
   'click [data-panel="close"]' : function(event) {
@@ -71,6 +71,27 @@ Template.addSystem.events({
 
     if(title.value && size.value) {
       Meteor.call('addSystem', {
+        title: title.value,
+        description: description.value,
+        size: size.value,
+        parent: Session.get('currentItem')
+      });
+
+      title.value = '';
+      description.value = '';
+      size.value = '';
+    }
+  }
+});
+
+Template.addPlanet.events({
+  'click .mtr_add-planet': function(event, template) {
+    var title = template.find('#mtr_planet-title');
+    var description = template.find('#mtr_planet-description');
+    var size = template.find('#mtr_planet-size');
+
+    if(title.value && size.value) {
+      Meteor.call('addPlanet', {
         title: title.value,
         description: description.value,
         size: size.value,

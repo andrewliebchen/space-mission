@@ -4,9 +4,7 @@
 
 <template name="application">
   <div class="wrapper is-paused">
-    <!-- <header class="header">
-      <button data-panel-template="addConstellation">Add constellation</button>
-    </header> -->
+    {{> header}}
     {{> yield}}
     {{> panel}}
   </div>
@@ -14,6 +12,13 @@
 
 <template name="loading">
   Loading
+</template>
+
+<template name="header">
+  <header class="header">
+    <button data-panel-template="addConstellation">Add constellation</button>
+    <button data-panel-template="addPlanet">Add Planet</button>
+  </header>
 </template>
 
 <template name="constellations">
@@ -95,3 +100,24 @@
   </fieldset>
   <button class="mtr_add-system">Add system</button>
 </template>
+
+<template name="addPlanet">
+  <fieldset>
+    <label>Title</label>
+    <input type="text" id="mtr_planet-title">
+  </fieldset>
+  <fieldset>
+    <label>Description</label>
+    <textarea id="mtr_planet-description"></textarea>
+  </fieldset>
+  <fieldset>
+    <label>Size</label>
+    <select id="mtr_planet-size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+  </fieldset>
+  <button class="mtr_add-planet">Add planet</button>
+</template>
+

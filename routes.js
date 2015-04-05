@@ -26,6 +26,7 @@ Router.map(function() {
       ];
     },
     data: function() {
+      Session.set('currentItem', this.params._id);
       return [
         Systems.findOne(),
         Planets.find({})
