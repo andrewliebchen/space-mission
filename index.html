@@ -38,7 +38,7 @@
 </template>
 
 <template name="system">
-  <div class="planets paused">
+  <div class="planets">
     {{#each planet}}
       <div class="planet__orbit"
         style="width: {{width}}%;
@@ -51,6 +51,7 @@
         <div class="planet {{size}}"></div>
       </div>
     {{/each}}
+    <div class="sun"></div>
   </div>
 </template>
 

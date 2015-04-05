@@ -70,7 +70,7 @@ label {
   position: fixed;
   right: 0;
   top: 0;
-  width: 33%;
+  width: 40%;
   z-index: 99;
 }
 
@@ -162,4 +162,15 @@ label {
   left: 0;
   transform: $transformCenter;
   background-color: white;
+}
+
+.sun {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: $transformCenter;
+  height: 2em;
+  width: 2em;
+  background-color: #F0F0F0;
+  border-radius: 1em;
 }
