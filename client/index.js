@@ -7,11 +7,10 @@ Template.panel.helpers({
   }
 });
 
-Template.header.events({
+Template.application.events({
   'click [data-panel-template]' : function(event) {
     var template = $(event.target).data('panel-template');
     Session.set('activePanel', template);
-    console.log('click')
   },
 
   'click [data-panel="close"]' : function(event) {
@@ -43,11 +42,18 @@ Template.system.helpers({
       planet.width = (index + 1) / planetsTotal * 100;
       planet.margin = planet.width / 2;
       planet.duration = (index * orbitSpeed) + orbitSpeed;
+      planet.zIndex = planetsTotal - index;
 
       return planet;
     });
   }
 });
+
+// Template.system.events({
+//   'click .planet': function() {
+//     console.log('click')
+//   }
+// });
 
 Template.addConstellation.events({
   'click .mtr_add-constellation': function(event, template) {
