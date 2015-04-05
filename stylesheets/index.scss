@@ -37,20 +37,26 @@ body {
   line-height: 1.5;
 }
 
-.wrapper {
-  min-height: 100vh;
+p {
+  padding-bottom: 1.5em;
 }
 
+dl,
 fieldset {
   border: 0;
-  padding: 0 0 1em;
+  padding: 0 0 1.5em;
 }
 
+dt,
 label {
   text-transform: uppercase;
   font-size: 0.75em;
   font-weight: bold;
   display: block;
+}
+
+.wrapper {
+  min-height: 100vh;
 }
 
 .header {
@@ -81,16 +87,17 @@ label {
 .constellations {
   @include clearfix;
   margin: 1%;
-  border-top: 1px dashed;
-  border-left: 1px dashed;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  margin-top: 4em;
 }
 
 .constellation {
   float: left;
   position: relative;
   width: 20%;
-  border-right: 1px dashed;
-  border-bottom: 1px dashed;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
   padding: 1em;
 
   &::before{
@@ -98,20 +105,57 @@ label {
     display: block;
     padding-top: 100%;
   }
+
+  &:hover {
+    background-color: black;
+    z-index: 1;
+  }
+}
+
+.constellation__container {
+  transition: transform 0.2s ease-in-out;
+  transform-origin: 50% 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: visible;
+  z-index: 1;
+
+  .constellation:hover & {
+    transform: scale(0.75);
+    background-color: white;
+  }
 }
 
 .constellation__meta {
+  transition: opacity 0.3s ease-in-out;
   left: 0;
   bottom: 0;
   padding: 1em;
   top: 0;
   right: 0;
   position: absolute;
-  display: none;
+  color: white;
+  opacity: 0;
 
   .constellation:hover & {
-    display: block;
+    opacity: 1;
   }
+}
+
+.constellation__title,
+.constellation__action {
+  position: absolute;
+}
+
+.constellation__title {
+  top: 0;
+}
+
+.constellation__action {
+  bottom: 0;
 }
 
 .systems {

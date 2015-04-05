@@ -25,13 +25,15 @@
   <div class="constellations">
     {{#each constellation}}
       <div class="constellation">
-        <div class="systems">
-          {{> systems}}
+        <div class="constellation__container">
+          <div class="systems">
+            {{> systems}}
+          </div>
         </div>
-        <!-- <div class="constellation__meta">
-          <h2>{{title}}</h2>
-          <button data-panel-template="addSystem">Add system</button>
-        </div> -->
+        <div class="constellation__meta">
+          <h2 class="constellation__title">{{title}}</h2>
+          <button class="constellation__action" data-panel-template="addSystem">Add system</button>
+        </div>
       </div>
     {{/each}}
   </div>
