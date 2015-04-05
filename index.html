@@ -43,8 +43,8 @@
   {{#each system}}
     <a href="{{pathFor route='system'}}"
       class="system {{size}}"
-      style="top:{{position.x}}%; left:{{position.y}}%;">
-      <!-- <h3>{{title}}</h3> -->
+      style="top:{{position.x}}%; left:{{position.y}}%;"
+      data-title="{{title}}">
     </a>
   {{/each}}
 </template>
@@ -62,7 +62,10 @@
                   -moz-animation-duration: {{duration}}s;
                     -o-animation-duration: {{duration}}s;
                        animation-duration: {{duration}}s;">
-        <div class="planet {{size}} mtr_planet-details" data-panel-template="planet"></div>
+        <a class="planet {{size}} mtr_planet-details"
+          data-panel-template="planet"
+          data-title="{{title}}">
+        </a>
       </div>
     {{/each}}
     <div class="sun"></div>

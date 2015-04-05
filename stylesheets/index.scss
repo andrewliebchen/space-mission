@@ -167,6 +167,7 @@ label {
   border: 2px solid;
   position: absolute;
   display: block;
+  cursor: pointer;
 }
 
 @each $sizeKey, $sizeValue in $systemSizes {
@@ -221,4 +222,46 @@ label {
   width: 2em;
   background-color: #F0F0F0;
   border-radius: 1em;
+}
+
+[data-title] {
+  $nubbinSize: 10px;
+  $backgroundColor: blue;
+
+  &::before,
+  &::after {
+    transform: translate3d(0, 0.25em, 0);
+    transition: all 0.1s ease-in-out;
+    opacity: 0;
+  }
+
+  &::before {
+    content: "";
+    width: $nubbinSize;
+    height: $nubbinSize;
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    background-image: linear-gradient(135deg, rgba($backgroundColor, 1) 50%, rgba($backgroundColor, 0) 50%);
+  }
+
+  &::after {
+    background-color: $backgroundColor;
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: $nubbinSize;
+    left: 50%;
+    color: white;
+    content: attr(data-title);
+    padding: 0.25em;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 999;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
