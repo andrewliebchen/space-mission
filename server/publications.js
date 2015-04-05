@@ -10,5 +10,6 @@ Meteor.publish('system', function(id){
 });
 
 Meteor.publish('planets', function(id){
+  Counts.publish(this, 'planetsTotal', Planets.find({parent: id}));
   return Planets.find({parent: id});
 });

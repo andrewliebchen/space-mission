@@ -37,11 +37,12 @@ Template.system.helpers({
   },
 
   planet: function(){
+    var planetsTotal = Counts.get('planetsTotal');
     return Planets.find({}).map(function(planet, index) {
-      planet.index = (index + 1) * 8;
-      planet.margin = planet.index / 2;
+      planet.width = (index + 1) / planetsTotal * 100;
+      planet.margin = planet.width / 2;
       return planet;
-    });;
+    });
   }
 });
 
