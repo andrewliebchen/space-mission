@@ -1,0 +1,19 @@
+.systems {
+
+}
+
+.system {
+  @extend %celestial-body;
+  position: absolute;
+}
+
+.sun {
+  background-color: #F0F0F0;
+  border-radius: 1em;
+  height: 2em;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: $transformCenter;
+  width: 2em;
+}

@@ -1,0 +1,72 @@
+.constellations {
+  @include clearfix;
+  border-left: 1px solid;
+  border-top: 1px solid;
+  margin: 4em 1% 1%;
+}
+
+.constellation {
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  float: left;
+  padding: 1em;
+  position: relative;
+  width: 20%;
+
+  &::before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  &:hover {
+    background-color: black;
+    z-index: 1;
+  }
+}
+
+.constellation__container {
+  bottom: 0;
+  left: 0;
+  overflow: visible;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform-origin: 50% 50%;
+  transition: transform 0.2s ease-in-out;
+  z-index: 1;
+
+  .constellation:hover & {
+    background-color: white;
+    transform: scale(0.75);
+  }
+}
+
+.constellation__meta {
+  bottom: 0;
+  color: white;
+  left: 0;
+  opacity: 0;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  .constellation:hover & {
+    opacity: 1;
+  }
+}
+
+.constellation__title,
+.constellation__action {
+  position: absolute;
+}
+
+.constellation__title {
+  top: 0;
+}
+
+.constellation__action {
+  bottom: 0;
+}

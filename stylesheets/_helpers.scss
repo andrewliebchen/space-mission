@@ -1,0 +1,42 @@
+$systemSizes: (
+  small: 1em,
+  medium: 2em,
+  large: 3em
+);
+
+$transformCenter: translate3d(-50%, -50%, 0);
+
+// Mixins
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+// Animations
+@keyframes orbit {
+  0% {
+    transform: rotate3d(0, 0, 0, 360deg);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+// Placeholder extends
+%celestial-body {
+  border: 2px solid;
+  display: block;
+  cursor: pointer;
+}
+
+// System and planet sises
+@each $sizeKey, $sizeValue in $systemSizes {
+  .#{$sizeKey} {
+    border-radius: $sizeValue / 2;
+    height: $sizeValue;
+    width: $sizeValue;
+  }
+}

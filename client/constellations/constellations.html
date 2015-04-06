@@ -1,0 +1,29 @@
+<template name="constellations">
+  <div class="constellations">
+    {{#each constellation}}
+      <div class="constellation">
+        <div class="constellation__container">
+          <div class="systems">
+            {{> systems}}
+          </div>
+        </div>
+        <div class="constellation__meta">
+          <h2 class="constellation__title">{{title}}</h2>
+          <button class="constellation__action" data-panel-template="addSystem">Add system</button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="addConstellation">
+  <fieldset>
+    <label>Title</label>
+    <input type="text" id="mtr_constellation-title">
+  </fieldset>
+  <fieldset>
+    <label>Description</label>
+    <textarea id="mtr_constellation-description"></textarea>
+  </fieldset>
+  <button class="mtr_add-constellation">Add constellation</button>
+</template>

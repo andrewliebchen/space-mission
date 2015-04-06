@@ -1,0 +1,55 @@
+.planet {
+  @extend %celestial-body;
+}
+
+.planets {
+  height: 100vh;
+  margin: 0 auto;
+  padding: 1em;
+  position: relative;
+  width: 90vw;
+}
+
+.planet__orbit {
+  animation: orbit 3s linear infinite;
+  border-radius: 100%;
+  border: 1px solid #ccc;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: 50% 50%;
+
+  &::before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+  }
+
+  .is-paused & {
+    animation-play-state: paused;
+  }
+
+  .planet {
+    animation-direction: reverse;
+    animation-duration: inherit;
+    animation: inherit;
+    background-color: white;
+    left: 0;
+    position: absolute;
+    top: 50%;
+
+    @each $sizeKey, $sizeValue in $systemSizes {
+      &.#{$sizeKey} {
+        $margin: -($sizeValue / 2);
+        margin: $margin 0 0 $margin;
+      }
+    }
+  }
+}
+
+.planet {
+  .panel & {
+    float: left;
+    margin-right: 1em;
+  }
+}

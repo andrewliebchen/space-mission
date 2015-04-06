@@ -1,0 +1,48 @@
+<template name="planet">
+  {{#each planetDetail}}
+    <div class="planet large" style="background-image: url('{{background}}');"></div>
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <dl>
+      <dt>System</dt>
+      <dd>{{systemParent}}</dd>
+    </dl>
+    <dl>
+      <dt>Constellation</dt>
+      {{#if Template.subscriptionsReady}}
+        <dd>{{constellationParent}}</dd>
+      {{else}}
+        <dd>Loading</dd>
+      {{/if}}
+    </dl>
+    <footer class="panel__footer">
+      {{#unless isFinished}}
+        {{#if isPaused}}<button class="mtr_start-planet">Start</button>{{/if}}
+        {{#if isStarted}}<button class="mtr_pause-planet">Pause</button>{{/if}}
+        <button class="mtr_finish-planet">Finish</button>
+      {{else}}
+        <button class="mtr_start-planet">Restart</button>
+      {{/unless}}
+    </footer>
+  {{/each}}
+</template>
+
+<template name="addPlanet">
+  <fieldset>
+    <label>Title</label>
+    <input type="text" id="mtr_planet-title">
+  </fieldset>
+  <fieldset>
+    <label>Description</label>
+    <textarea id="mtr_planet-description"></textarea>
+  </fieldset>
+  <fieldset>
+    <label>Size</label>
+    <select id="mtr_planet-size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+  </fieldset>
+  <button class="mtr_add-planet">Add planet</button>
+</template>

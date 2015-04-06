@@ -1,0 +1,31 @@
+<head>
+  <title>space-mission</title>
+</head>
+
+<template name="application">
+  <div class="wrapper is-paused">
+    {{> header}}
+    {{> yield}}
+    {{> panel}}
+  </div>
+</template>
+
+<template name="loading">
+  Loading
+</template>
+
+<template name="header">
+  <header class="header">
+    <button data-panel-template="addConstellation">Add constellation</button>
+    <button class="mtr_add-planet" data-panel-template="addPlanet">Add Planet</button>
+  </header>
+</template>
+
+<template name="panel">
+  {{#if activePanel}}
+    <div class="panel">
+      <a data-panel="close">close</a>
+      {{> UI.dynamic template=activePanel}}
+    </div>
+  {{/if}}
+</template>

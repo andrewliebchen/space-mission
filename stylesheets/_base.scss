@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: "avenir next", avenir, arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+p {
+  padding-bottom: 1.5em;
+}
+
+dl,
+fieldset {
+  border: 0;
+  padding: 0 0 1.5em;
+}
+
+dt,
+label {
+  display: block;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.wrapper {
+  min-height: 100vh;
+}
+
+[data-title] {
+  $nubbinSize: 10px;
+  $backgroundColor: blue;
+
+  &::before,
+  &::after {
+    opacity: 0;
+    transform: translate3d(0, 0.25em, 0);
+    transition: all 0.1s ease-in-out;
+  }
+
+  &::before {
+    background-image: linear-gradient(135deg, rgba($backgroundColor, 1) 50%, rgba($backgroundColor, 0) 50%);
+    bottom: 100%;
+    content: "";
+    height: $nubbinSize;
+    left: 50%;
+    position: absolute;
+    width: $nubbinSize;
+  }
+
+  &::after {
+    background-color: $backgroundColor;
+    bottom: 100%;
+    color: white;
+    content: attr(data-title);
+    left: 50%;
+    margin-bottom: $nubbinSize;
+    padding: 0.25em;
+    pointer-events: none;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 9999;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+button {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid blue;
+  color: blue;
+  font-weight: bold;
+  line-height: 2;
+  padding: 0 1em;
+
+  &:hover {
+    background-color: blue;
+    color: white;
+  }
+}

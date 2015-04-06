@@ -1,0 +1,53 @@
+<template name="systems">
+  {{#each system}}
+    <a href="{{pathFor route='system'}}"
+      class="system {{size}}"
+      style="top:{{position.x}}%; left:{{position.y}}%;"
+      data-title="{{title}}">
+    </a>
+  {{/each}}
+</template>
+
+<template name="system">
+  <div class="planets">
+    {{#each planet}}
+      <div class="planet__orbit mtr_planet-details"
+        data-panel-template="planet"
+        style="width: {{width}}%;
+               margin-top: -{{margin}}%;
+               margin-left: -{{margin}}%;
+               z-index: {{zIndex}};
+               -webkit-animation-duration: {{duration}}s;
+                  -moz-animation-duration: {{duration}}s;
+                    -o-animation-duration: {{duration}}s;
+                       animation-duration: {{duration}}s;">
+        <a class="planet {{size}} mtr_planet-details"
+          data-panel-template="planet"
+          data-title="{{title}}"
+          style="background-image: url('{{background}}');">
+        </a>
+      </div>
+    {{/each}}
+    <div class="sun"></div>
+  </div>
+</template>
+
+<template name="addSystem">
+  <fieldset>
+    <label>Title</label>
+    <input type="text" id="mtr_system-title">
+  </fieldset>
+  <fieldset>
+    <label>Description</label>
+    <textarea id="mtr_system-description"></textarea>
+  </fieldset>
+  <fieldset>
+    <label>Size</label>
+    <select id="mtr_system-size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+  </fieldset>
+  <button class="mtr_add-system">Add system</button>
+</template>

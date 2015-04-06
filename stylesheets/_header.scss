@@ -1,0 +1,13 @@
+.header {
+  @include clearfix;
+  left: 0;
+  padding: 1em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 99;
+
+  button {
+    float: right;
+  }
+}
