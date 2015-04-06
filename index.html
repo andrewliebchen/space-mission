@@ -88,6 +88,15 @@
         <dd>Loading</dd>
       {{/if}}
     </dl>
+    <footer class="panel__footer">
+      {{#unless isFinished}}
+        {{#if isPaused}}<button class="mtr_start-planet">Start</button>{{/if}}
+        {{#if isStarted}}<button class="mtr_pause-planet">Pause</button>{{/if}}
+        <button class="mtr_finish-planet">Finish</button>
+      {{else}}
+        <button class="mtr_start-planet">Restart</button>
+      {{/unless}}
+    </footer>
   {{/each}}
 </template>
 

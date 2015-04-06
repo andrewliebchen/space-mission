@@ -71,6 +71,32 @@ Template.planet.helpers({
     var constellationParent = Systems.findOne().parent;
     Meteor.subscribe('constellation', constellationParent);
     return Constellations.findOne().title;
+  },
+
+  isPaused: function(){
+    return this.status === 'paused' ? true : null;
+  },
+
+  isStarted: function(){
+    return this.status === 'started' ? true : null;
+  },
+
+  isFinished: function(){
+    return this.status === 'finished' ? true : null;
+  }
+});
+
+Template.planet.events({
+  'click .mtr_start-planet': function(){
+    Meteor.call('startPlanet', this._id);
+  },
+
+  'click .mtr_pause-planet': function(){
+    Meteor.call('pausePlanet', this._id);
+  },
+
+  'click .mtr_finish-planet': function(){
+    Meteor.call('finishPlanet', this._id);
   }
 });
 

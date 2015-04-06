@@ -22,5 +22,23 @@ Meteor.methods({
       size: args.size,
       parent: args.parent
     });
+  },
+
+  startPlanet: function(planetId){
+    Planets.update(planetId, {$set: {
+      status: 'started'
+    }});
+  },
+
+  pausePlanet: function(planetId){
+    Planets.update(planetId, {$set: {
+      status: 'paused'
+    }});
+  },
+
+  finishPlanet: function(planetId){
+    Planets.update(planetId, {$set: {
+      status: 'finished'
+    }});
   }
 });

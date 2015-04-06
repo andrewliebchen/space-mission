@@ -58,7 +58,8 @@ Meteor.startup(function () {
             title: 'Planet' + j,
             description: 'Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur.',
             size: size,
-            parent: systemParent
+            parent: systemParent,
+            status: 'paused'
           });
         });
       });
