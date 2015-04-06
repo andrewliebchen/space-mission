@@ -20,6 +20,7 @@ Meteor.methods({
       title: args.title,
       description: args.description,
       size: args.size,
+      background: args.background,
       parent: args.parent
     });
   },

@@ -66,6 +66,7 @@ label {
   right: 0;
   top: 0;
   padding: 1em;
+  z-index: 99;
 
   button {
     float: right;
@@ -81,7 +82,7 @@ label {
   right: 0;
   top: 0;
   width: 40%;
-  z-index: 99;
+  z-index: 999;
 }
 
 .constellations {
@@ -165,9 +166,12 @@ label {
 .system,
 .planet {
   border: 2px solid;
-  position: absolute;
   display: block;
   cursor: pointer;
+}
+
+.system {
+  position: absolute;
 }
 
 @each $sizeKey, $sizeValue in $systemSizes {
@@ -204,13 +208,30 @@ label {
   .is-paused & {
     animation-play-state: paused;
   }
+
+  .planet {
+    animation-duration: inherit;
+    animation: inherit;
+    animation-direction: reverse;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: white;
+
+    @each $sizeKey, $sizeValue in $systemSizes {
+      &.#{$sizeKey} {
+        $margin: -($sizeValue / 2);
+        margin: $margin 0 0 $margin;
+      }
+    }
+  }
 }
 
 .planet {
-  top: 50%;
-  left: 0;
-  transform: $transformCenter;
-  background-color: white;
+  .panel & {
+    float: left;
+    margin-right: 1em;
+  }
 }
 
 .sun {
@@ -256,7 +277,7 @@ label {
     padding: 0.25em;
     pointer-events: none;
     white-space: nowrap;
-    z-index: 999;
+    z-index: 9999;
   }
 
   &:hover::before,

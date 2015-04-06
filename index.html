@@ -17,7 +17,7 @@
 <template name="header">
   <header class="header">
     <button data-panel-template="addConstellation">Add constellation</button>
-    <button data-panel-template="addPlanet">Add Planet</button>
+    <button class="mtr_add-planet" data-panel-template="addPlanet">Add Planet</button>
   </header>
 </template>
 
@@ -64,7 +64,8 @@
                        animation-duration: {{duration}}s;">
         <a class="planet {{size}} mtr_planet-details"
           data-panel-template="planet"
-          data-title="{{title}}">
+          data-title="{{title}}"
+          style="background-image: url('{{background}}');">
         </a>
       </div>
     {{/each}}
@@ -74,6 +75,7 @@
 
 <template name="planet">
   {{#each planetDetail}}
+    <div class="planet large" style="background-image: url('{{background}}');"></div>
     <h2>{{title}}</h2>
     <p>{{description}}</p>
     <dl>

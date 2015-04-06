@@ -6,6 +6,8 @@ blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
 check@1.0.5
+d3@1.0.0
+d3js:d3@3.5.5
 ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
@@ -49,6 +51,7 @@ session@1.1.0
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 templating@1.1.1
+timbroddin:trianglify@0.1.0
 tmeasday:publish-counts@0.3.4
 tracker@1.0.7
 ui@1.0.6
